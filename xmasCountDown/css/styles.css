@@ -1,0 +1,206 @@
+
+/*--------------------------------------------------------------
+General styling
+--------------------------------------------------------------*/
+header {
+	text-align: center;
+	margin: 0;
+	padding: 1em 0;
+}
+
+p {
+    margin: 0;
+	padding: 1em 0;
+}
+
+img {
+	display: block;
+	border: 0;
+	width: 100%;
+	height: auto;
+}
+
+.site {
+    display: grid;
+    background: url(../images/snowman-1090261_1920.jpg) no-repeat center center fixed;
+    background-size: cover;
+}
+
+.site-title {
+    color:rgb(255,0,0);
+    text-shadow: 2px 2px 10px rgb(255,255,255);
+    font-size: 50px;
+}
+
+/* Splash section */
+
+.splash {
+	background: rgba(0, 0, 0, 0.274);
+	padding-bottom: 2em;
+}
+
+.splash-content {
+	padding: 1.5em;
+}
+
+.splash-text {
+    color:rgb(255,255,255);
+    text-shadow: 2px 2px 2px rgb(255,0,0);
+    font-size: 25px;
+    text-align: center;
+}
+
+
+@media screen and (min-width: 600px) {
+	.splash-text {
+		columns: 2;
+		column-gap: 1em;
+	}
+
+	.splash-text p {
+		padding-top: 0;
+	}
+}
+
+/* Buckets section */
+
+.bucket {
+    background: rgba(62, 69, 76, 0.37);
+    color:rgb(255,255,255);
+    text-shadow: 2px 2px 2px rgb(255,0,0);
+    padding: 1.5em;
+    font-size: 24px;
+}
+.buckets {
+    padding: 2em 1em 1em;
+	
+}
+
+
+.buckets ul {
+	margin: 0;
+	padding: 0;
+}
+
+.buckets li {
+	margin-bottom: 1em;
+	list-style-type: none;
+}
+
+.bucket-title {
+    /* font-size: 34px; */
+    color:rgb(255,255,255);
+    text-shadow: 2px 2px 5px rgba(0, 255, 0, 0.699);
+}
+
+/* Time section */
+
+.timeNow {
+    font-size: 34px;
+    color:rgb(255,255,255);
+    text-shadow: 2px 2px 5px rgba(0, 255, 0, 0.699);
+}
+
+
+.dateNow {
+    color:rgb(255,0,0);
+    text-shadow: 2px 2px 2px rgb(255,255,255);
+    font-size: 24px;
+}
+
+.countdown {
+    color: rgb(255,0,0);
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.699);
+    font-size: 40px;
+}
+
+#days {
+    color: rgb(255,0,0);
+}
+
+#hrs {
+    color: rgba(0, 255, 0, 0.699);
+}
+
+#mins {
+    color: rgb(255,0,0);
+}
+
+#secs {
+    color: rgba(0, 255, 0, 0.699);
+}
+
+/* Colophon section */
+.colophon {
+	padding: 2em;
+	background: rgba(62, 69, 76, 0.37);
+	color:rgb(255,0,0);
+    text-shadow: 2px 2px 2px rgb(255,255,255);
+    text-align: center;
+    font-size: 20px;
+}
+
+.colophon a {
+	color: rgb(12, 35, 240);
+}
+
+.colophon a:hover,
+.colophon a:focus {
+	border-bottom: 1px solid white;
+}
+
+/*--------------------------------------------------------------
+Use flex to create a two-bucket layout
+--------------------------------------------------------------*/
+
+@media screen and (min-width: 700px) {
+	@supports (display: flex) {
+
+		.buckets ul {
+			display: flex;
+			justify-content: space-around;
+		}
+
+		.buckets li {
+			width: 31%;
+		}
+
+	}
+}
+
+/*--------------------------------------------------------------
+Basic responsive layout for all browsers:
+--------------------------------------------------------------*/
+
+.site {
+	max-width: 50em;
+	margin: 0 auto;
+}
+
+
+/*--------------------------------------------------------------
+CSS Grid layout for modern browsers:
+--------------------------------------------------------------*/
+
+@supports (grid-area: auto) {
+
+	@media screen and (min-width: 600px) { 
+		.site {
+			max-width: none;
+		}
+	
+		.main-area > *, .colophon {
+			display: grid;
+			grid-template-columns: 1fr repeat(2, minmax(auto,25em)) 1fr;
+		}
+	
+		.splash-content,
+		.buckets ul {
+			grid-column: 2/4;
+		}
+	
+		.colophon aside {
+			grid-column: span 2;
+		} 
+	}
+}
